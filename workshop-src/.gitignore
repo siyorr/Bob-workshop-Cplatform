@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+coverage/
+.env
+.env.local
+*.log
+logs/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+target/
+.bob/
+AGENTS.md

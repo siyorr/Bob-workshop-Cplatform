@@ -1,0 +1,20 @@
+{
+  "name": "customer-portal-services",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Source package for customer portal service examples",
+  "workspaces": [
+    "frontend",
+    "auth-service",
+    "mock-api"
+  ],
+  "scripts": {
+    "validate": "npm run test --workspaces --if-present",
+    "start:mock-api": "npm start --workspace mock-api",
+    "start:auth": "npm start --workspace auth-service",
+    "start:frontend": "npm start --workspace frontend"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
