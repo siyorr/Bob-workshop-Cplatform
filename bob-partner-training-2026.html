@@ -1,0 +1,2135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:,">
+<title>IBM Bob 파트너 엔지니어 교육 2026</title>
+<style>
+:root {
+  --ink: #0a0a0f;
+  --ink-2: #1e1e2e;
+  --ink-3: #2d2d3f;
+  --muted: #6b7280;
+  --rule: #e5e7eb;
+  --page: #fafaf8;
+  --white: #ffffff;
+  --blue: #2563eb;
+  --blue-l: #dbeafe;
+  --blue-d: #1d4ed8;
+  --teal: #0d9488;
+  --teal-l: #ccfbf1;
+  --green: #059669;
+  --green-l: #d1fae5;
+  --amber: #d97706;
+  --amber-l: #fef3c7;
+  --red: #dc2626;
+  --red-l: #fee2e2;
+  --violet: #7c3aed;
+  --violet-l: #ede9fe;
+  --code-text: #e2e8f0;
+  --code-muted: #94a3b8;
+  --code-action: #334155;
+  --code-action-hover: #475569;
+  --white-a-08: rgba(255, 255, 255, 0.08);
+  --white-a-94: rgba(255, 255, 255, 0.94);
+  --ink-a-04: rgba(10, 10, 15, 0.04);
+  --ink-a-06: rgba(10, 10, 15, 0.06);
+  --blue-a-05: rgba(37, 99, 235, 0.05);
+  --blue-a-08: rgba(37, 99, 235, 0.08);
+  --teal-a-08: rgba(13, 148, 136, 0.08);
+  --rule-a-28: rgba(229, 231, 235, 0.28);
+  --rule-a-45: rgba(229, 231, 235, 0.45);
+  --mono: 'IBM Plex Mono', 'Courier New', 'Lucida Console', monospace;
+  --sans: 'IBM Plex Sans KR', 'IBM Plex Sans', 'Aptos', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+  --col: 72rem;
+  --gap: clamp(1rem, 4vw, 2rem);
+  --sidebar-w: 17.5rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --radius-1: 3px;
+  --radius-2: 6px;
+  --radius-3: 8px;
+  --shadow-soft: 0 16px 40px var(--ink-a-06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top right, var(--teal-a-08), transparent 26rem),
+    linear-gradient(180deg, var(--page), var(--white) 40%, var(--page));
+  overflow-x: hidden;
+}
+
+.masthead {
+  background: var(--ink);
+  color: var(--white);
+  padding: 0.35rem var(--gap);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+}
+.masthead-left { opacity: 0.56; }
+.masthead-right { display: flex; gap: var(--space-4); opacity: 0.66; white-space: nowrap; }
+.journal-header {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: var(--gap) var(--gap) 0;
+  border-bottom: 3px solid var(--ink);
+}
+.journal-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--space-2);
+}
+.journal-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-3);
+  word-break: keep-all;
+}
+.journal-title em { color: var(--blue); font-style: normal; }
+.journal-deck {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  max-width: 52rem;
+  margin-bottom: var(--space-5);
+  word-break: keep-all;
+}
+.journal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-6);
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--rule);
+}
+.journal-meta strong { color: var(--ink); }
+
+.tab-bar {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  background: var(--white-a-94);
+  border-bottom: 1px solid var(--rule);
+  overflow-x: auto;
+  scrollbar-width: none;
+  box-shadow: 0 8px 18px var(--ink-a-04);
+  backdrop-filter: blur(10px);
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+  padding: 0 var(--gap);
+}
+.nav-section-label, .nav-divider { display: none; }
+.nav-item {
+  flex: 0 0 auto;
+  padding: 0.85rem 1rem;
+  color: var(--muted);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.nav-item:hover { color: var(--ink); background: var(--blue-a-05); }
+.nav-item.active { color: var(--blue); border-bottom-color: var(--blue); }
+.nav-tag {
+  display: inline-block;
+  margin-left: var(--space-1);
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--radius-1);
+  background: var(--blue-l);
+  color: var(--blue-d);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+@media (min-width: 900px) {
+  body { padding-left: var(--sidebar-w); }
+  .tab-bar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: var(--sidebar-w);
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid var(--rule);
+    border-bottom: none;
+    box-shadow: 16px 0 40px var(--ink-a-04);
+  }
+  .tab-inner {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-5) var(--space-4);
+  }
+  .tab-inner::before {
+    content: 'TRAINING INDEX';
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-3);
+    border-bottom: 3px solid var(--ink);
+  }
+  .nav-section-label {
+    display: block;
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    line-height: 1.3;
+    text-transform: uppercase;
+    margin: var(--space-4) 0 var(--space-1);
+  }
+  .nav-section-label:first-of-type { margin-top: 0; }
+  .nav-divider {
+    display: block;
+    height: 1px;
+    margin: var(--space-2) 0;
+    background: var(--rule);
+  }
+  .nav-item {
+    width: 100%;
+    padding: 0.48rem var(--space-3);
+    border-left: 3px solid transparent;
+    border-bottom: none;
+    border-radius: 0 var(--radius-2) var(--radius-2) 0;
+    text-align: left;
+    white-space: normal;
+    word-break: keep-all;
+  }
+  .nav-item:hover { background: var(--blue-a-08); }
+  .nav-item.active {
+    color: var(--blue-d);
+    border-left-color: var(--blue);
+    border-bottom-color: transparent;
+    background: var(--blue-l);
+  }
+  .nav-tag { float: right; margin-left: var(--space-2); }
+}
+
+.cds-main {
+  max-width: var(--col);
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 2rem var(--gap) 4rem;
+}
+.page-section { display: none; animation: pageIn 0.28s ease-out; }
+.page-section.active { display: block; }
+@keyframes pageIn { from { opacity: 0; transform: translateY(0.35rem); } to { opacity: 1; transform: translateY(0); } }
+
+.page-header {
+  padding-bottom: var(--space-5);
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--rule);
+}
+.breadcrumb {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+.cds-heading-05 {
+  font-size: clamp(1.6rem, 4vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.18;
+  margin-bottom: var(--space-2);
+  word-break: keep-all;
+}
+.cds-heading-04 { font-size: 1.25rem; font-weight: 800; line-height: 1.3; margin-bottom: var(--space-2); }
+.cds-heading-03 { font-size: 1rem; font-weight: 700; line-height: 1.35; margin-bottom: var(--space-2); }
+.page-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin-top: var(--space-3); }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-1);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.tag-blue { background: var(--blue-l); color: var(--blue-d); }
+.tag-green { background: var(--green-l); color: var(--green); }
+.tag-gray { background: var(--rule); color: var(--ink-3); }
+.tag-purple { background: var(--violet-l); color: var(--violet); }
+.tag-teal { background: var(--teal-l); color: var(--teal); }
+.tag-yellow { background: var(--amber-l); color: var(--amber); }
+.tag-red { background: var(--red-l); color: var(--red); }
+
+.card, .card-accent, .mission-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-5);
+  margin-bottom: var(--space-4);
+  position: relative;
+  overflow: hidden;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+.card-accent::before, .mission-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--blue);
+}
+.card-accent.blue::before { background: var(--blue); }
+.card-accent.green::before { background: var(--green); }
+.card-accent.purple::before { background: var(--violet); }
+.card-accent.teal::before { background: var(--teal); }
+.card-accent.yellow::before { background: var(--amber); }
+.card-accent.red::before { background: var(--red); }
+.mission-card::before { background: var(--blue); }
+
+.notif {
+  display: flex;
+  gap: var(--space-3);
+  padding: 0.9rem 1.1rem;
+  margin: var(--space-4) 0;
+  border-left: 4px solid;
+  border-radius: 0 var(--radius-2) var(--radius-2) 0;
+  font-size: 0.87rem;
+}
+.notif-info { background: var(--blue-l); border-color: var(--blue); color: var(--blue-d); }
+.notif-success { background: var(--green-l); border-color: var(--green); color: var(--green); }
+.notif-warning { background: var(--amber-l); border-color: var(--amber); color: var(--amber); }
+.notif-error { background: var(--red-l); border-color: var(--red); color: var(--red); }
+.notif-icon { flex-shrink: 0; margin-top: 0.05rem; }
+.notif h4 {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-1);
+}
+.notif p {
+  color: inherit;
+  font-size: 0.87rem;
+  line-height: 1.6;
+  margin: 0;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  line-break: strict;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 2.5rem 0 var(--space-5);
+}
+.section-title::before {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: var(--ink);
+}
+.section-title::after {
+  content: '';
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  background: var(--ink);
+  flex-shrink: 0;
+}
+.section-title h2 {
+  order: 2;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  word-break: keep-all;
+}
+.section-num {
+  order: 1;
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin: var(--space-4) 0; }
+th {
+  background: var(--ink);
+  color: var(--white);
+  text-align: left;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+td { padding: 0.62rem 0.9rem; border-bottom: 1px solid var(--rule); color: var(--muted); vertical-align: top; }
+td:first-child { color: var(--ink); font-weight: 700; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--rule-a-28); }
+.agenda-table td.time { white-space: nowrap; color: var(--ink); width: 8.2rem; }
+.agenda-highlight td { background: var(--blue-l); font-weight: 700; }
+
+.cb-wrap {
+  background: var(--ink-2);
+  border-radius: var(--radius-3);
+  margin: var(--space-4) 0;
+  overflow: hidden;
+}
+.cb-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--ink-3);
+  color: var(--code-muted);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--space-2) var(--space-4);
+  border-bottom: 1px solid var(--white-a-08);
+}
+.cb-label::before {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0.8rem 0 0 var(--amber), 1.6rem 0 0 var(--green);
+  flex: 0 0 auto;
+}
+.cb-label span { flex: 1; margin-left: var(--space-6); }
+.cb-wrap pre {
+  background: var(--ink-2);
+  color: var(--code-text);
+  padding: 1rem 1.1rem;
+  margin: 0;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  line-break: strict;
+}
+.copy-btn {
+  background: var(--code-action);
+  border: none;
+  color: var(--code-muted);
+  cursor: pointer;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-1);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.copy-btn:hover { background: var(--code-action-hover); color: var(--white); }
+.copy-btn.ok { background: var(--green); color: var(--white); }
+code {
+  background: var(--blue-a-08);
+  color: var(--blue-d);
+  padding: 0.08rem 0.32rem;
+  border-radius: var(--radius-1);
+  font-family: var(--mono);
+  font-size: 0.88em;
+}
+
+.steps { counter-reset: sc; list-style: none; margin: var(--space-3) 0; }
+.steps li {
+  counter-increment: sc;
+  position: relative;
+  padding: 0.72rem 0.9rem 0.72rem 3.1rem;
+  margin-bottom: var(--space-2);
+  background: var(--rule-a-45);
+  border-radius: var(--radius-2);
+  font-size: 0.88rem;
+}
+.steps li::before {
+  content: counter(sc);
+  position: absolute;
+  left: 0.9rem;
+  top: 0.72rem;
+  width: 1.38rem;
+  height: 1.38rem;
+  background: var(--blue);
+  color: var(--white);
+  border-radius: 50%;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chk { list-style: none; margin: var(--space-2) 0; }
+.chk li {
+  position: relative;
+  padding: 0.45rem 0 0.45rem 1.7rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.88rem;
+}
+.chk li:last-child { border-bottom: none; }
+.chk li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.72rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 2px solid var(--green);
+  border-radius: var(--radius-1);
+  background: linear-gradient(135deg, var(--green) 50%, transparent 51%);
+}
+
+.mission-card .mission-id {
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-1);
+}
+.mission-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: var(--space-2); }
+
+.card h3, .card-accent h3, .mission-card h3 {
+  color: var(--blue-d);
+  font-size: 0.92rem;
+  font-weight: 800;
+  margin: var(--space-4) 0 var(--space-2);
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--rule);
+}
+.card h3:first-child, .card-accent h3:first-child, .mission-card h3:first-child { margin-top: 0; }
+.card h4, .card-accent h4 { color: var(--ink-3); font-size: 0.82rem; font-weight: 800; margin: var(--space-4) 0 var(--space-1); }
+.card p, .card-accent p, .mission-card p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.62;
+  margin-bottom: var(--space-2);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  line-break: strict;
+}
+.card ul, .card-accent ul, .mission-card ul { padding-left: var(--space-5); margin: var(--space-2) 0; }
+.card li, .card-accent li, .mission-card li {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.58;
+  margin-bottom: var(--space-1);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  line-break: strict;
+}
+.note-small { color: var(--muted); font-size: 0.78rem; }
+.note-small-spaced { color: var(--muted); font-size: 0.78rem; margin-top: var(--space-2); }
+
+@media (max-width: 720px) {
+  body { font-size: 14px; }
+  .masthead { align-items: flex-start; flex-direction: column; gap: var(--space-1); }
+  .masthead-right { gap: var(--space-3); }
+  .journal-title { font-size: clamp(1.85rem, 11vw, 2.7rem); }
+  .journal-deck { font-size: 0.96rem; }
+  .nav-item { padding: 0.75rem 0.7rem; font-size: 0.73rem; }
+  .nav-tag { display: none; }
+  .cds-main { padding-top: var(--space-6); }
+  .card, .card-accent, .mission-card { padding: var(--space-4); }
+  .card-grid { grid-template-columns: 1fr; }
+  .section-title { align-items: flex-start; gap: var(--space-2); }
+  .section-title::before { min-width: 2rem; margin-top: 0.6rem; }
+  table { display: block; overflow-x: auto; white-space: nowrap; }
+  .cb-label { align-items: flex-start; }
+  .cb-label span { margin-left: var(--space-5); }
+  .cb-wrap pre { font-size: 0.76rem; word-break: keep-all; overflow-wrap: break-word; }
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <span class="masthead-left">IBM Partner Engineering · Standalone Handout</span>
+  <span class="masthead-right">
+    <span>2026.09.17</span>
+    <span>한국어</span>
+    <span>Bob Training</span>
+  </span>
+</div>
+
+<header class="journal-header">
+  <p class="journal-eyebrow">Cplatform</p>
+  <h1 class="journal-title">IBM Bob 파트너 엔지니어 교육 2026</h1>
+  <p class="journal-deck">IBM Bob의 핵심 기능을 직접 실습하고, 과제를 수행할 수 있도록 구성한 핸드아웃입니다.</p>
+  <div class="journal-meta">
+    <span><strong>대상</strong> 파트너사 엔지니어</span>
+    <span><strong>일시</strong> 2026.09.17 (목)</span>
+    <span><strong>장소</strong> 과천 아이티센타워 3층 C교육장</span>
+    <span><strong>형식</strong> 핵심 기능 실습 + 과제 미션</span>
+  </div>
+</header>
+
+<nav class="tab-bar" aria-label="IBM Bob 파트너 교육 섹션">
+  <div class="tab-inner">
+    <div class="nav-section-label">시작하기</div>
+    <button class="nav-item active" data-section="home" onclick="navigate('home')">홈 &amp; 아젠다</button>
+    <div class="nav-divider" aria-hidden="true"></div>
+    <div class="nav-section-label">핵심 기능 실습</div>
+    <button class="nav-item" data-section="g0" onclick="navigate('g0')">G0 환경 설정</button>
+    <button class="nav-item" data-section="g1" onclick="navigate('g1')">G1 프로젝트 기반 설정</button>
+    <button class="nav-item" data-section="g2" onclick="navigate('g2')">G2 모드 &amp; 커스텀 모드</button>
+    <button class="nav-item" data-section="g3" onclick="navigate('g3')">G3 응답 제어</button>
+    <button class="nav-item" data-section="g4" onclick="navigate('g4')">G4 확장 &amp; 자동화</button>
+    <button class="nav-item" data-section="g5" onclick="navigate('g5')">G5 실행 &amp; 품질</button>
+    <div class="nav-divider" aria-hidden="true"></div>
+    <div class="nav-section-label">과제 실습</div>
+    <button class="nav-item" data-section="b0" onclick="navigate('b0')">B0 시나리오 소개</button>
+    <button class="nav-item" data-section="m1" onclick="navigate('m1')">M1 설정 흐름 개선</button>
+    <button class="nav-item" data-section="m2" onclick="navigate('m2')">M2 보안 이슈 탐지</button>
+    <button class="nav-item" data-section="m3" onclick="navigate('m3')">M3 API 계약 탐색</button>
+    <button class="nav-item" data-section="m4" onclick="navigate('m4')">M4 문서 검증</button>
+    <button class="nav-item" data-section="m5" onclick="navigate('m5')">M5 테스트 범위 탐색</button>
+    <button class="nav-item" data-section="m6" onclick="navigate('m6')">M6 Skill 자동화</button>
+    <button class="nav-item" data-section="m7" onclick="navigate('m7')">M7 Subagent 병렬 분석</button>
+    <div class="nav-divider" aria-hidden="true"></div>
+    <div class="nav-section-label">부록</div>
+    <button class="nav-item" data-section="c1" onclick="navigate('c1')">C1 프롬프트 모음</button>
+    <button class="nav-item" data-section="c2" onclick="navigate('c2')">C2 트러블슈팅</button>
+    <button class="nav-item" data-section="c3" onclick="navigate('c3')">C3 미션 힌트</button>
+  </div>
+</nav>
+
+<!-- ══ MAIN CONTENT ══ -->
+<main class="cds-main">
+
+<!-- ════════ HOME ════════ -->
+<section id="home" class="page-section active">
+  <div class="page-header">
+    <!-- <div class="breadcrumb">IBM Bob 파트너 엔지니어 교육 2026</div>
+    <h1 class="cds-heading-05">IBM Bob 핵심 기능 실습</h1>
+    <div class="page-meta">
+      <span class="tag tag-blue">2026.09.17 (목)</span>
+      <span class="tag tag-gray">과천 아이티센타워 3층 C교육장</span>
+      <span class="tag tag-green">파트너사 엔지니어</span> -->
+    </div>
+  </div>
+
+  <div class="notif notif-info">
+    <div class="notif-icon">ℹ️</div>
+    <div>
+      <h4>교재 사용 방법</h4>
+      <p>왼쪽 사이드바로 섹션을 이동합니다. 각 섹션은 독립적으로 볼 수 있습니다. 프롬프트 블록의 복사 버튼으로 Bob에 붙여 넣을 수 있습니다.</p>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">01</span><h2>오늘의 아젠다</h2></div>
+  <div class="card">
+    <table class="agenda-table">
+      <thead><tr><th>시간</th><th>내용</th><th>구분</th></tr></thead>
+      <tbody>
+        <tr><td class="time">~ 10:00</td><td>등록 및 환경 확인</td><td><span class="tag tag-gray">준비</span></td></tr>
+        <tr><td class="time">10:00 ~ 10:30</td><td>IBM Bob 소개 세션</td><td><span class="tag tag-blue">이론</span></td></tr>
+        <tr class="agenda-highlight"><td class="time">10:30 ~ 12:00</td><td>IBM Bob 핵심 기능 실습 — G0 ~ G5</td><td><span class="tag tag-green">실습</span></td></tr>
+        <tr><td class="time">12:00 ~ 13:00</td><td>점심시간</td><td><span class="tag tag-gray">휴식</span></td></tr>
+        <tr class="agenda-highlight"><td class="time">13:00 ~ 15:00</td><td>과제 구현 실습 — M1 ~ M7</td><td><span class="tag tag-green">실습</span></td></tr>
+        <tr><td class="time">15:00 ~ 15:15</td><td>휴식</td><td><span class="tag tag-gray">휴식</span></td></tr>
+        <tr><td class="time">15:15 ~ 17:00</td><td>IBM Software 연계 시연</td><td><span class="tag tag-purple">시연</span></td></tr>
+      </tbody>
+    </table>
+    <p class="note-small">* 시간은 사정에 따라 변경될 수 있습니다.</p>
+  </div>
+
+  <div class="section-title"><span class="section-num">02</span><h2>사전 준비 사항</h2></div>
+  <div class="card-grid">
+    <div class="card-accent blue">
+      <h3>필수</h3>
+      <ul>
+        <li>IBM Bob IDE 설치 (bob.ibm.com)</li>
+        <li>bob.ibm.com 계정 로그인 확인</li>
+        <li>Bob IDE에서 <code>bob-practice/</code> 폴더 열기</li>
+        <li>git clone</li>
+      </ul>
+    </div>
+    <div class="card-accent yellow">
+      <h3>선택</h3>
+      <ul>
+        <li>VS Code 또는 터미널 기본 사용 경험</li>
+        <li>JavaScript / Node.js 기초 지식</li>
+      </ul>
+      <p class="note-small-spaced">경험이나 지식이 없더라도 실습 진행에는 문제되지 않습니다.</p>
+    </div>
+    <div class="card-accent green">
+      <h3>검증(Optional)</h3>
+      <div class="cb-wrap">
+        <div class="cb-label"><span>powershell</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+        <pre>cd bob-practice
+npm test</pre>
+      </div>
+      <p class="note-small">Node.js와 npm이 있는 참가자만 실행합니다. 실패하거나 건너뛰어도 Bob IDE로 실습을 계속할 수 있습니다.</p>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">03</span><h2>교육 목표</h2></div>
+  <div class="card">
+    <ul class="chk">
+      <li>IBM Bob의 3가지 Mode(Agent / Plan / Ask)를 상황에 맞게 전환할 수 있다</li>
+      <li>Rules, Skills, Custom Mode를 프로젝트에 맞게 설정할 수 있다</li>
+      <li>MCP 서버를 연결하고 Bob의 도구 범위를 확장할 수 있다</li>
+      <li>Bob IDE 채팅과 <code>@terminal</code>, <code>@problems</code>로 실행 오류를 해석하고 대처 방향을 정리할 수 있다</li>
+      <li>실제 코드베이스에서 Bob을 활용해 개선 미션을 수행할 수 있다</li>
+    </ul>
+  </div>
+</section>
+<!-- /HOME -->
+
+<!-- ════════ G0: 환경 설정 ════════ -->
+<section id="g0" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">핵심 기능 실습</div>
+    <h1 class="cds-heading-05">G0 — 환경 설정</h1>
+    <div class="page-meta">
+      <span class="tag tag-green">실습</span>
+      <span class="tag tag-gray">15분</span>
+    </div>
+  </div>
+  <div class="notif notif-info">
+    <div class="notif-icon">ℹ️</div>
+    <div><h4>이 섹션의 목표</h4>
+    <p>Bob IDE 로그인과 프로젝트 열기를 확인하고, Auto-approve와 <code>/init</code>으로 프로젝트 초기 탐색을 시작합니다.</p>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>Bob IDE 상태 확인</h2></div>
+  <div class="card">
+    <h3>로그인과 프로젝트 열기</h3>
+    <ul class="chk">
+      <li>Bob IDE를 실행하고 <code>bob.ibm.com</code> 계정으로 로그인합니다</li>
+      <li><code>bob-practice/</code> 폴더를 Bob IDE에서 엽니다</li>
+      <li>채팅 패널이 열리고 Agent / Plan / Ask Mode를 선택할 수 있는지 확인합니다</li>
+    </ul>
+    <h3>Auto-approve 설정</h3>
+    <p>Auto-approve가 켜져 있으면 Bob이 파일을 수정할 때 매번 승인 팝업 없이 진행됩니다. 오늘 실습에서는 켜두는 것을 권장합니다.</p>
+    <div class="notif notif-warning">
+      <div class="notif-icon">⚠️ 주의</div>
+      <p>운영 환경이나 민감한 저장소에서는 Auto-approve를 사용하지 마세요.</p>
+    </div>
+    <p>설정 경로: <strong>Bob IDE 우상단 설정 아이콘 → Auto-approve 토글 ON</strong></p>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>/init으로 프로젝트 탐색</h2></div>
+  <div class="card">
+    <p><code>bob-practice/</code>를 열고 Bob 채팅창에 <code>/init</code>을 입력하면 작은 연습 프로젝트의 구조 탐색을 시작할 수 있습니다. 생성되는 요약과 파일 배치는 Bob 버전과 폴더 상태에 따라 달라질 수 있습니다.</p>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅 입력</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>/init</pre>
+    </div>
+    <h3>확인 포인트</h3>
+    <ul class="chk">
+      <li>Bob이 <code>README.md</code>와 <code>package.json</code>을 근거로 연습 프로젝트와 <code>npm test</code> 스크립트를 설명했는가</li>
+      <li>서비스 구조를 단정하지 않고 <code>src/</code>, 테스트 파일, <code>practice-artifacts/</code>를 함께 확인했는가</li>
+      <li>추가 컨텍스트가 필요하면 이 handout의 흐름에 맞춰 README, package 설정, 소스 파일, 테스트 파일, 연습 아티팩트를 멘션해 다시 확인합니다</li>
+    </ul>
+  </div>
+
+  <div class="section-title"><span class="section-num">3</span><h2>선택: Node 검증과 오류 해석</h2></div>
+  <div class="card">
+    <p>Node.js와 npm이 준비된 참가자는 터미널에서 테스트를 실행해 볼 수 있습니다. 실행 결과는 Bob IDE 채팅에 붙여 넣거나 <code>@terminal</code>로 참조합니다.</p>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅 입력</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>이 폴더의 package.json을 읽고 프로젝트 구성을 한 줄로 요약해줘.</pre>
+    </div>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>PowerShell — 선택 검증</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>cd bob-practice
+npm test</pre>
+    </div>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅 — @terminal 활용</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>@terminal
+위 실행 결과에서 실패한 항목과 다음 확인 단계를 정리해줘.</pre>
+    </div>
+    <div class="notif notif-warning">
+      <div class="notif-icon">⚠️ @terminal 안내</div>
+      <div>
+        <p>Bob이 <code>Shell integration may not be active.</code>를 표시할 때만 확인합니다. Bob IDE Settings를 열고 <code>Shell Integration</code>을 검색한 뒤 <strong>Terminal › Integrated › Shell Integration: Enabled</strong>를 켭니다. 또는 <code>settings.json</code>에 <code>"terminal.integrated.shellIntegration.enabled": true</code>를 설정합니다.</p>
+        <p>설정 후 기존 터미널을 닫고 새 터미널을 열어 다시 <code>@terminal</code>을 시도합니다. 그래도 사용할 수 없다면 터미널 출력을 Bob 채팅에 직접 붙여 넣고 계속 진행하세요. 터미널과 Node 실행은 오늘 실습에서 선택 사항입니다.</p>
+      </div>
+    </div>
+    <p>테스트 스크립트가 완료되면 Node 검증까지 마친 것입니다. 일부 항목이 실패하거나 실행하지 못해도 IDE 설정이 끝났다면 워크숍을 계속 진행할 수 있습니다.</p>
+  </div>
+</section>
+<!-- /G0 -->
+
+<!-- ════════ G1: 프로젝트 기반 설정 ════════ -->
+<section id="g1" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">핵심 기능 실습</div>
+    <h1 class="cds-heading-05">G1 — 프로젝트 기반 설정</h1>
+    <div class="page-meta">
+      <span class="tag tag-green">실습</span>
+      <span class="tag tag-gray">25분</span>
+    </div>
+  </div>
+  <div class="notif notif-info">
+    <div class="notif-icon">ℹ️</div>
+    <div><h4>이 섹션의 목표</h4>
+    <p>Rules 파일을 작성해 Bob의 행동 기준을 잡고, Literate Coding으로 코드와 설명을 함께 작성하는 흐름을 경험합니다.</p>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>Rules — Bob의 행동 기준 파일</h2></div>
+  <div class="card">
+    <p>Bob의 Rules는 프로젝트 공통 폴더와 모드별 폴더에 둘 수 있습니다. 오늘은 Agent / Plan / Ask 흐름을 구분하기 위해 모드별 폴더를 사용합니다.</p>
+    <table>
+      <thead><tr><th>파일 경로</th><th>적용 모드</th></tr></thead>
+      <tbody>
+        <tr><td><code>.bob/rules/</code></td><td>모든 Mode 공통</td></tr>
+        <tr><td><code>.bob/rules-agent/</code></td><td>Agent</td></tr>
+        <tr><td><code>.bob/rules-plan/</code></td><td>Plan</td></tr>
+        <tr><td><code>.bob/rules-ask/</code></td><td>Ask</td></tr>
+      </tbody>
+    </table>
+    <div class="notif notif-warning">
+      <div class="notif-icon">⚠️</div>
+      <div><p>파일명은 팀 규칙에 맞게 정하되, 경로가 현재 Mode와 맞는지 확인합니다. 여러 Rules가 동시에 적용될 수 있으므로 충돌하는 지시를 넣지 않습니다.</p></div>
+    </div>
+    <h3>실습: 프로젝트 Rules 만들기</h3>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>현재 열린 bob-practice 프로젝트에 맞는 Agent용 Rules 파일을 .bob/rules-agent/practice.md로 만들어 줘.
+Rules에는 아래 내용만 포함해 줘.
+- 응답 언어: 한국어
+- 파일 변경은 현재 열린 bob-practice 폴더 안의 파일로만 제한
+- 한 번의 요청에서 수정 파일은 최대 2개 이내로 제한
+- 터미널과 Node 실행은 선택이며 실패해도 대체 기록으로 계속 진행
+- 응답 형식은 표와 체크리스트 중심
+- 현재 열린 bob-practice 폴더 밖의 다른 폴더는 열거나 수정하지 않음
+
+주의: 실제 과제 서비스, 엔드포인트, 데모 계정, 보안 구현 가이드는 쓰지 마.</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>Literate Coding — Ctrl+I</h2></div>
+  <div class="card">
+    <p>코드 블록을 선택한 상태에서 <strong>Ctrl+I</strong>(Mac: ⌘+I)를 누르면 선택 영역에 대해 Bob에게 바로 요청을 보낼 수 있습니다. 파일 전체 컨텍스트 없이 해당 범위만 전달해 빠릅니다.</p>
+    <h3>실습</h3>
+    <ol class="steps">
+      <li><code>src/rollbackPractice.js</code>를 Bob IDE에서 엽니다</li>
+      <li>Bob에게 먼저 "설명 주석을 붙이기 좋은 작은 함수 하나를 추천해줘"라고 묻고, 추천된 함수 전체를 마우스로 선택합니다</li>
+      <li><strong>Ctrl+I</strong>(Mac: ⌘+I)를 누릅니다</li>
+      <li>입력창에 아래를 입력합니다</li>
+    </ol>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Literate Coding 입력창</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>이 함수가 하는 일을 JSDoc 주석으로 설명해줘. 코드는 바꾸지 마.</pre>
+    </div>
+    <p>Bob이 <code>src/rollbackPractice.js</code>의 선택 범위에만 JSDoc을 추가하고 나머지 코드는 건드리지 않아야 합니다. diff를 확인하세요.</p>
+    <h3>언제 쓰나?</h3>
+    <table>
+      <thead><tr><th>방식</th><th>사용 시점</th></tr></thead>
+      <tbody>
+        <tr><td>채팅 입력</td><td>전체 저장소 분석, 계획 수립, 여러 파일</td></tr>
+        <tr><td>Ctrl+I (Literate)</td><td>특정 함수·블록 수정, 주석 추가, 리팩터</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<!-- /G1 -->
+
+<!-- ════════ G2: 모드 & 커스텀 모드 ════════ -->
+<section id="g2" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">핵심 기능 실습</div>
+    <h1 class="cds-heading-05">G2 — 모드 &amp; 커스텀 모드</h1>
+    <div class="page-meta">
+      <span class="tag tag-green">실습</span>
+      <span class="tag tag-gray">25분</span>
+    </div>
+  </div>
+  <div class="notif notif-info">
+    <div class="notif-icon">ℹ️</div>
+    <div><h4>이 섹션의 목표</h4>
+    <p>Agent / Plan / Ask 3가지 Mode를 전환하며 차이를 체감하고, Custom Mode로 역할 페르소나를 만들어 봅니다.</p>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>3가지 내장 Mode</h2></div>
+  <div class="card">
+    <table>
+      <thead><tr><th>Mode</th><th>특징</th><th>주요 도구</th><th>전환 명령</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Agent</strong></td><td>계획 승인 후 구현, 파일 수정, 실행 검증에 사용</td><td>Read, Edit, Execute, MCP, Skills</td><td><code>/agent</code></td></tr>
+        <tr><td><strong>Plan</strong></td><td>변경 전 계획 수립과 영향 범위 검토에 사용</td><td>Read, MCP, Skills</td><td><code>/plan</code></td></tr>
+        <tr><td><strong>Ask</strong></td><td>읽기 전용. 코드 변경 없음</td><td>Read, MCP, Skills</td><td><code>/ask</code></td></tr>
+      </tbody>
+    </table>
+    <h3>모드 전환 방법</h3>
+    <ul>
+      <li>단축키: <strong>Ctrl+.</strong> (Mac: ⌘+.) → 드롭다운 선택</li>
+      <li>채팅 직접 입력: <code>/agent</code> <code>/plan</code> <code>/ask</code></li>
+      <li>하단 상태바 Mode 버튼 클릭</li>
+    </ul>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>실습: 같은 질문, 다른 Mode</h2></div>
+  <div class="card">
+    <p>아래 프롬프트를 Ask → Plan → Agent 순서로 각각 입력해보고 응답 차이를 관찰합니다.</p>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>공통 프롬프트 (3가지 Mode 각각 시도)</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>src/rollbackPractice.js에서 Rollback 실습 전에 확인해야 할 주의점을 근거와 함께 찾아줘.</pre>
+    </div>
+    <table>
+      <thead><tr><th>Mode</th><th>예상 결과</th></tr></thead>
+      <tbody>
+        <tr><td>Ask</td><td>설명만, 코드 변경 없음</td></tr>
+        <tr><td>Plan</td><td>위험 목록 + 개선 계획서 작성 (코드 미수정)</td></tr>
+        <tr><td>Agent</td><td>승인된 계획에 따라 구현하고 diff와 검증 결과 제시</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title"><span class="section-num">3</span><h2>Custom Mode 만들기</h2></div>
+  <div class="card">
+    <p>Custom Mode는 <code>.bob/custom_modes.yaml</code>로 정의합니다. 프로젝트 전용 역할 페르소나를 만들 수 있습니다.</p>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>.bob/custom_modes.yaml</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>customModes:
+  - slug: practice-reviewer
+    name: Practice Reviewer
+    roleDefinition: >
+      연습 프로젝트 검토자로 README, 소스, practice-artifacts를 읽습니다.
+      목적, 담당자/진입점, 불확실한 점을 구분하고
+      다음 실습에서 확인할 질문을 표로 정리합니다.
+      파일을 직접 수정하지 않고 분석 결과만 제공합니다.
+    allowedTools:
+      - read
+    groups:
+      - read</pre>
+    </div>
+    <h3>실습</h3>
+    <ol class="steps">
+      <li>위 YAML로 <code>.bob/custom_modes.yaml</code> 파일을 생성합니다 (Bob에게 요청하거나 직접 작성)</li>
+      <li>Bob IDE Mode 드롭다운에서 <code>Practice Reviewer</code>를 선택합니다</li>
+      <li>아래 프롬프트를 입력합니다</li>
+    </ol>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>practice-reviewer Mode에서 입력</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>@/practice-artifacts/context-map.md
+@/practice-artifacts/mode-notes.md
+@/practice-artifacts/rules-check.md
+세 연습 아티팩트를 읽고 목적, 담당자/진입점, 불확실한 점을 표로 정리해줘.</pre>
+    </div>
+  </div>
+</section>
+<!-- /G2 -->
+
+<!-- ════════ G3: 응답 제어 ════════ -->
+<section id="g3" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">핵심 기능 실습</div>
+    <h1 class="cds-heading-05">G3 — 응답 제어</h1>
+    <div class="page-meta">
+      <span class="tag tag-green">실습</span>
+      <span class="tag tag-gray">25분</span>
+    </div>
+  </div>
+  <div class="notif notif-info">
+    <div class="notif-icon">ℹ️</div>
+    <div><h4>이 섹션의 목표</h4>
+    <p>Rules로 Bob의 출력 형식을 제어하고, @멘션으로 필요한 컨텍스트만 정확히 전달하는 방법을 익힙니다.</p>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>Rules — 출력 형식 제어</h2></div>
+  <div class="card">
+    <p>Rules 파일에 응답 형식 규칙을 적으면 Bob이 일관된 형식으로 답합니다.</p>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>.bob/rules-agent/practice.md 예시</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre># Practice Rules
+
+## 응답 형식
+- 분석 결과는 반드시 표(Markdown table)로 정리한다
+- 변경 계획에는 반드시 "변경 파일", "변경 이유", "검증 방법" 열을 포함한다
+- 위험 수준은 높음/중간/낮음 세 단계로만 표시한다
+- 코드 변경 전에 계획을 먼저 제시하고 승인을 구한다
+
+## 범위 제한
+- 한 번의 요청에서 수정 파일은 최대 2개
+- 현재 열린 bob-practice 폴더 밖의 파일은 읽거나 수정하지 않는다
+- 실제 과제 서비스 이름을 가정하지 않는다</pre>
+    </div>
+    <h3>실습: Rules 적용 전후 비교</h3>
+    <ol class="steps">
+      <li>위 Rules 없이 Bob에게 "practice-artifacts 세 파일의 목적과 불확실성을 표로 분석해줘"를 요청하고 결과를 확인합니다</li>
+      <li>위 Rules를 <code>.bob/rules-agent/</code> 아래 파일로 저장합니다</li>
+      <li>같은 질문을 다시 요청하고 응답 형식 차이를 비교합니다</li>
+      <li>비교를 확인한 뒤 <code>.bob/rules-agent/practice.md</code> 임시 파일을 삭제해 이후 실습이 이 규칙을 이어받지 않도록 합니다</li>
+    </ol>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>@멘션 — 컨텍스트 정밀 제어</h2></div>
+  <div class="card">
+    <p>채팅 입력창에서 <code>@</code>를 입력하면 다양한 컨텍스트 소스를 지정할 수 있습니다.</p>
+    <table>
+      <thead><tr><th>@멘션</th><th>설명</th><th>예시</th></tr></thead>
+      <tbody>
+        <tr><td><code>@/파일경로</code></td><td>특정 파일을 컨텍스트로 추가</td><td><code>@/practice-artifacts/context-map.md</code></td></tr>
+        <tr><td><code>@/폴더경로</code></td><td>폴더 전체 포함</td><td><code>@/practice-artifacts</code></td></tr>
+        <tr><td><code>@problems</code></td><td>현재 에디터의 오류/경고 목록</td><td>빌드 에러 분석 시</td></tr>
+        <tr><td><code>@terminal</code></td><td>최근 터미널 출력 내용</td><td>실행 실패 로그 분석</td></tr>
+        <tr><td><code>@git-changes</code></td><td>현재 스테이지된 변경 diff</td><td>변경 사항 리뷰</td></tr>
+        <tr><td><code>@URL</code></td><td>외부 URL 페이지 내용</td><td>공식 문서 참조</td></tr>
+      </tbody>
+    </table>
+    <h3>실습: @멘션으로 정밀 분석</h3>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>@/practice-artifacts/context-map.md @/practice-artifacts/mode-notes.md @/practice-artifacts/rules-check.md
+이 세 파일을 비교해서 목적, 담당자/진입점, 아직 불확실한 점을 찾아줘.</pre>
+    </div>
+    <h4>선택: @terminal용 출력 만들기</h4>
+    <p>아래 명령은 <code>bob-practice</code> 루트에서 실행하며, 다음 <code>@terminal</code> 요청에 사용할 출력을 만듭니다. 실패하거나 건너뛰어도 이 실습 진행에는 지장이 없습니다.</p>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>PowerShell — 선택 실행 (bob-practice 루트)</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>npm test</pre>
+    </div>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅 — @terminal 활용</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>@terminal
+위 터미널 출력에서 성공/실패 신호와 다음 확인 명령을 정리해줘.</pre>
+    </div>
+  </div>
+</section>
+<!-- /G3 -->
+
+<!-- ════════ G4: 확장 & 자동화 ════════ -->
+<section id="g4" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">핵심 기능 실습</div>
+    <h1 class="cds-heading-05">G4 — 확장 &amp; 자동화</h1>
+    <div class="page-meta">
+      <span class="tag tag-green">실습</span>
+      <span class="tag tag-gray">20분</span>
+    </div>
+  </div>
+  <div class="notif notif-info">
+    <div class="notif-icon">ℹ️</div>
+    <div><h4>이 섹션의 목표</h4>
+    <p>Skills로 반복 작업을 패턴화하고, 선택 실습으로 Notion MCP 샌드박스에 연결해 Bob이 외부 도구를 읽고 제한된 업데이트를 수행하는 흐름을 익힙니다.</p>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>Skills — 반복 작업 패턴화</h2></div>
+  <div class="card">
+    <p>Skill은 자주 쓰는 프롬프트 절차를 파일로 저장해두는 기능입니다. <code>/스킬이름</code>으로 호출합니다.</p>
+    <table>
+      <thead><tr><th>항목</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td>파일 위치 (프로젝트)</td><td><code>.bob/skills/{name}/SKILL.md</code></td></tr>
+        <tr><td>파일 위치 (사용자)</td><td><code>사용자 Bob 설정의 skills/{name}/SKILL.md</code></td></tr>
+        <tr><td>Agent 정의 위치</td><td><code>.bob/agents/*.md</code></td></tr>
+        <tr><td>필수 frontmatter</td><td><code>name</code>, <code>description</code></td></tr>
+        <tr><td>호출 방법</td><td>채팅에 <code>/스킬이름</code> 입력</td></tr>
+      </tbody>
+    </table>
+    <h3>Skill 파일 구조</h3>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>.bob/skills/env-check/SKILL.md 예시</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>---
+name: env-check
+description: 연습 프로젝트의 실행 준비 상태를 근거 기반으로 점검합니다
+---
+
+# 환경 점검 절차
+
+1. package.json과 README에서 선택 실행 조건과 npm test 의미를 확인
+2. src/rollbackPractice.js와 src/bobTipsPractice.js의 실습 목적을 비교
+3. practice-artifacts 세 파일에서 목적, 담당자/진입점, 불확실성을 확인
+4. 발견 항목마다 근거 파일과 실습 진행 영향도를 기록
+5. 결과를 OK / CHECK / ACTION 표로 정리</pre>
+    </div>
+    <h3>실습: env-check Skill 만들기</h3>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅 (Agent Mode)</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>위 SKILL.md 내용대로 bob-practice 안에 .bob/skills/env-check/SKILL.md 파일을 만들어줘.</pre>
+    </div>
+    <p>파일이 생성되면 채팅에 <code>/env-check</code>를 입력해 실행합니다.</p>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>MCP — Notion 샌드박스 실습</h2></div>
+  <div class="card">
+    <p>MCP(Model Context Protocol)는 Bob이 외부 시스템을 도구로 호출할 수 있게 해주는 프로토콜입니다. 이 선택 실습은 현재 열린 <code>bob-practice</code> 프로젝트의 프로젝트 범위 설정으로 진행하며, Bob이 Notion MCP로 별도의 개인 테스트 전용 워크스페이스에 연결해 정해진 범위 안에서 읽기와 작은 쓰기 작업을 확인합니다.</p>
+    <div class="notif notif-warning">
+      <div class="notif-icon">⚠️</div>
+      <div><p>이 실습은 본인이 새로 만든 <strong>테스트 전용 Notion 워크스페이스</strong>에서만 진행합니다. 평소 사용하는 개인 업무 워크스페이스, 회사, 고객사, 운영, 프로덕션, 기밀 콘텐츠가 있는 워크스페이스나 페이지는 절대 사용하지 않습니다. OAuth 승인은 연결 절차일 뿐 서버 접근을 기술적으로 전부 제한하는 안전장치라고 가정하지 않습니다. 안전 경계는 별도 테스트 워크스페이스를 쓰는 운영 규칙으로 만듭니다. 네트워크/OAuth/Node-npm 사용이 어려우면 강사 데모를 관찰하고 의도한 읽기/쓰기 경계만 기록합니다.</p></div>
+    </div>
+    <h3>1) 개인 테스트 전용 Notion 워크스페이스 만들기</h3>
+    <ol class="steps">
+      <li>Notion에서 이번 워크숍에만 사용할 새 개인 테스트 워크스페이스를 만듭니다.</li>
+      <li>회사, 고객, 운영, 프로덕션, 기밀 자료를 복사하거나 연결하지 않습니다.</li>
+      <li>이후 작업은 현재 연결된 테스트 전용 워크스페이스 안에서 새로 만드는 고유 이름 항목만 대상으로 합니다.</li>
+    </ol>
+    <h3>2) bob-practice의 Bob MCP 설정에 Notion MCP 구성 추가</h3>
+    <ol class="steps">
+      <li>Bob 패널에서 MCP 탭을 열고 Use MCP Servers를 켭니다.</li>
+      <li>Edit Project MCP를 열어 <code>bob-practice/.bob/mcp.json</code>에 아래 내용을 저장합니다. 템플릿은 <code>templates/project-mcp.notion.example.json</code>입니다.</li>
+      <li>이 설정은 <code>npx</code>로 로컬 stdio bridge를 시작해 Notion의 hosted MCP(<code>https://mcp.notion.com/mcp</code>)에 연결합니다.</li>
+    </ol>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>.bob/mcp.json — Notion hosted MCP bridge</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>{
+  "mcpServers": {
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.notion.com/mcp"]
+    }
+  }
+}</pre>
+    </div>
+    <h3>3) 등록 후 브라우저 authorization 완료</h3>
+    <ol class="steps">
+      <li>설정을 저장한 뒤 Bob MCP 탭에서 Notion 서버가 등록되는지 확인합니다.</li>
+      <li>첫 도구 사용 또는 연결 확인 과정에서 브라우저가 열리면 본인 계정으로 Notion OAuth authorization을 완료합니다.</li>
+      <li>비밀번호, 토큰, OAuth 코드, 세션 정보는 누구와도 공유하지 않고 문서나 채팅에 붙여넣지 않습니다.</li>
+      <li>승인 화면에서 테스트 전용 워크스페이스를 선택했는지 다시 확인합니다.</li>
+    </ol>
+    <h3>4) Bob IDE 재시작</h3>
+    <ol class="steps">
+      <li>브라우저 authorization을 마친 뒤 Bob IDE를 완전히 종료했다가 다시 엽니다.</li>
+      <li><code>bob-practice</code> 프로젝트 폴더를 다시 열고 MCP 탭에서 Notion 서버와 도구가 다시 보이는지 확인합니다.</li>
+      <li>연결이 준비되지 않으면 무리하게 진행하지 말고 강사 데모를 보며 의도한 읽기/쓰기 경계를 기록합니다.</li>
+    </ol>
+    <h3>5) 테스트 워크스페이스에서 제한된 작업 수행</h3>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅 — 테스트 항목 1개 생성</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>Notion MCP를 사용해서 새로운 테스트 페이지를 생성해줘.
+
+# 페이지 제목:
+Notion MCP Test
+
+# 페이지 내용:
+(1) 제목 : Notion MCP 기능 테스트
+(2) 설명 : 이 페이지는 Notion MCP의 기본 기능을 테스트하기 위해 생성하는 페이지입니다.
+(3) 테스트 예정 항목
+- 페이지 생성
+- 페이지 수정
+- 데이터베이스 생성
+- 데이터 추가 및 수정
+- 데이터 검색 및 필터링
+- 데이터 분석
+
+페이지가 정상적으로 생성되었는지 실제 Notion MCP 결과를 확인해줘.
+
+완료되면 다음 정보를 알려줘.
+- 생성된 페이지 제목
+- 생성된 위치
+- 페이지 ID 또는 식별 가능한 정보
+- 생성 성공 여부
+
+추측하지 말고 실제 MCP 실행 결과를 기준으로 답변해줘.</pre>
+    </div>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅 — 생성한 항목만 읽기</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>방금 생성한 Notion MCP Test 페이지 안에 새로운 데이터베이스를 생성해줘.
+
+# 데이터베이스 이름: MCP 테스트 관리
+
+다음 속성을 포함하도록 구성해줘.
+- 테스트 항목: Title
+- 상태: Select (대기, 진행중, 완료)
+- 중요도: Select (높음, 중간, 낮음)
+- 담당자: Text
+- 테스트 일자: Date
+- 결과: Text
+- 비고: Text
+
+가능하다면 일반 표가 아니라 실제 Notion 데이터베이스로 생성해줘.
+
+생성 후 실제 데이터베이스를 다시 확인해서 다음 정보를 알려줘.
+- 데이터베이스 이름
+- 생성된 속성 목록
+- 각 속성의 타입
+- 생성 위치
+- 생성 성공 여부
+
+현재 연결된 Notion MCP에서 데이터베이스 생성 자체가 지원되지 않는다면 임의로 다른 방식으로 처리하지 말고, 지원되지 않는 기능이 무엇인지 정확하게 알려줘.</pre>
+    </div>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅 — 생성한 항목만 업데이트</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>MCP 테스트 관리 데이터베이스에 테스트용 더미데이터 10개를 생성해줘.
+
+다음 조건을 만족하도록 데이터를 만들어줘.
+1. 총 10개
+2. 테스트 항목은 모두 서로 다르게 생성
+3. 상태는 대기, 진행중, 완료를 골고루 사용
+4. 중요도는 높음, 중간, 낮음을 골고루 사용
+5. 담당자는 아래 값을 임의로 배정
+   (MCP Test User 1, MCP Test User 2, MCP Test User 3)
+6. 테스트 일자는 오늘을 포함하여 최근 7일 이내의 날짜로 분산
+7. 결과는 상태에 맞게 작성 (정상, 확인 중, 미실행, 추가 확인 필요)
+8. 비고에는 간단한 테스트 설명을 작성
+
+테스트 항목은 다음과 같이 구성해줘.
+1. 페이지 생성 테스트
+2. 페이지 조회 테스트
+3. 페이지 수정 테스트
+4. 데이터베이스 생성 테스트
+5. 데이터 추가 테스트
+6. 데이터 수정 테스트
+7. 데이터 삭제 테스트
+8. 데이터 검색 테스트
+9. 필터링 테스트
+10. 정렬 테스트
+
+10개의 데이터 생성이 끝난 후 데이터베이스를 다시 조회해서 실제로 10개가 생성되었는지 확인해줘.
+마지막에는 실제 생성된 데이터를 표 형태로 보여줘.
+반드시 실제 Notion MCP를 통해 생성 및 조회한 결과를 기준으로 답변해줘.</pre>
+    </div>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅 — 증거 표 정리</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>MCP 테스트 관리 데이터베이스를 실제 Notion MCP를 사용해서 조회해줘.
+
+다음 작업을 순서대로 수행해줘.
+
+1. 상태가 진행중인 데이터를 검색해줘.
+2. 검색된 데이터 중 중요도가 높음인 항목이 있다면 하나를 선택해줘.
+3. 없다면 진행중 상태의 항목 중 하나를 선택해줘.
+4. 선택한 항목의 값을 다음과 같이 변경해줘.
+  - 상태: 완료
+  - 결과: 정상
+  - 비고: MCP를 통한 수정 테스트 완료
+5. 다른 항목은 수정하지 마.
+
+수정 후 해당 데이터를 다시 조회해서 실제 값이 변경되었는지 확인해줘.
+
+마지막에는 아래 내용을 알려줘.
+- 수정한 테스트 항목
+- 수정 전 상태
+- 수정 후 상태
+- 수정 전 결과
+- 수정 후 결과
+- 수정 성공 여부
+
+실제 MCP 호출 결과를 기준으로 판단해줘.</pre>
+    </div>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅 — 테스트 항목 정리</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>MCP 테스트 관리 데이터베이스의 전체 데이터를 Notion MCP를 사용해서 조회하고 분석해줘.
+
+다음 작업을 수행해줘.
+1. 전체 데이터 개수를 확인해줘.
+2. 상태가 완료인 항목 개수를 확인해줘.
+3. 상태가 진행중인 항목 개수를 확인해줘.
+4. 상태가 대기인 항목 개수를 확인해줘.
+5. 중요도가 높음인 항목을 조회해줘.
+6. 중요도가 높음이면서 아직 완료되지 않은 항목이 있는지 확인해줘.
+7. 테스트 일자가 가장 최근인 순서대로 데이터를 확인해줘.
+8. 전체 테스트 완료율을 계산해줘.
+
+완료율은 아래 기준으로 계산해줘.
+완료율 = 완료된 테스트 수 / 전체 테스트 수 × 100
+
+분석이 끝나면 Notion MCP Test 페이지의 맨 아래에 아래 형식으로 내용을 추가해줘.
+제목 : MCP Test Summary
+전체 테스트: 10개
+완료: 실제 조회된 개수
+진행중: 실제 조회된 개수
+대기: 실제 조회된 개수
+완료율: 실제 계산된 값%
+중요도 높음 미완료 항목: 실제 조회된 항목명 또는 없음
+테스트 결과: 전체 테스트 데이터를 기준으로 현재 MCP 테스트 진행 상태를 2~3문장으로 요약해줘.
+완료된 테스트가 대부분이라면 전체적으로 정상적으로 동작하고 있다고 평가하고,
+진행중 또는 대기 상태의 테스트가 있다면 어떤 항목을 추가로 확인해야 하는지 함께 작성해줘.
+
+모든 값은 반드시 실제 MCP 테스트 관리 데이터베이스를 조회한 결과를 사용해줘.
+
+이전 대화의 값이나 임의로 가정한 값을 사용하지 말고,
+실제 Notion MCP 호출 결과를 기준으로 작성해줘.</pre>
+    </div>
+    <p>정리까지 확인한 뒤 Bob MCP 설정에서 Notion 연결을 끊거나 authorization을 clear합니다.</p>
+  </div>
+</section>
+<!-- /G4 -->
+
+<!-- ════════ G5: 실행 & 품질 ════════ -->
+<section id="g5" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">핵심 기능 실습</div>
+    <h1 class="cds-heading-05">G5 — 실행 &amp; 품질</h1>
+    <div class="page-meta">
+      <span class="tag tag-green">실습</span>
+      <span class="tag tag-gray">25분</span>
+    </div>
+  </div>
+  <div class="notif notif-info">
+    <div class="notif-icon">ℹ️</div>
+    <div><h4>이 섹션의 목표</h4>
+    <p>참가자는 실행 출력 해석, Rollback 복원, Bob Tips 검토, explore subagent 병렬 분석을 각각 직접 수행하고 결과를 기록합니다.</p>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>Bob IDE로 실행 출력 해석</h2></div>
+  <div class="card">
+    <p>먼저 <code>bob-practice</code> 루트에서 테스트 출력을 만들고, Bob IDE 채팅에서 <code>@terminal</code>로 성공 신호와 확인할 항목을 분리합니다. Node.js나 npm 실행이 준비되지 않은 환경에서는 G0에서 기록한 터미널 출력 또는 강사가 제공한 실행 출력을 채팅에 붙여넣어 같은 해석 작업을 진행합니다.</p>
+    <ol class="steps">
+      <li>Bob IDE에서 연 폴더가 <code>bob-practice</code>인지 확인합니다.</li>
+      <li>터미널에서 아래 명령을 실행하고 출력의 마지막 20줄을 눈으로 확인합니다.</li>
+      <li>실행할 수 없는 환경이면 G0에서 기록한 터미널 출력이나 강사가 제공한 <code>npm test</code> 출력을 준비합니다.</li>
+      <li>Bob IDE 채팅에 실행 출력 해석 프롬프트를 입력하고, Bob의 답변에서 성공 신호와 다음 확인 항목을 기록합니다.</li>
+    </ol>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>PowerShell — bob-practice에서 실행</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>npm test</pre>
+    </div>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅 — 바로 앞 터미널 출력 해석</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>@terminal
+방금 bob-practice에서 실행한 npm test 출력만 근거로 해석해줘.
+
+다음 형식으로 답해줘.
+1. 성공으로 볼 수 있는 신호
+2. 실패 또는 주의가 필요한 신호
+3. 워크숍을 계속 진행해도 되는지 판단
+4. 다음에 확인할 항목 최대 3개</pre>
+    </div>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅 — 붙여넣은 출력 해석</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>아래에 붙여넣은 npm test 실행 출력만 근거로 해석해줘.
+
+[여기에 G0에서 기록한 터미널 출력 또는 강사가 제공한 출력을 붙여넣기]
+
+다음 형식으로 답해줘.
+1. 성공으로 볼 수 있는 신호
+2. 실패 또는 주의가 필요한 신호
+3. 워크숍을 계속 진행해도 되는지 판단
+4. 다음에 확인할 항목 최대 3개</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>Rollback — 변경 되돌리기</h2></div>
+  <div class="card">
+    <p>Rollback은 Bob이 만든 파일 변경을 되돌릴 때 쓰는 안전장치입니다. 이 실습에서는 되돌릴 작은 변경을 일부러 만든 뒤, 파일만 복원하고 대화 내용은 남겨 복원 전후를 비교합니다.</p>
+    <ol class="steps">
+      <li>Bob IDE를 Agent mode로 둡니다.</li>
+      <li>아래 프롬프트를 입력해 <code>src/rollbackPractice.js</code>에서 <code>describeRollbackPractice()</code> 바로 위에 한국어 JSDoc 주석 1개만 추가하게 합니다.</li>
+      <li>Bob이 작업을 마치면 diff를 열어 주석 1개 외에 다른 파일이나 줄이 바뀌지 않았는지 확인합니다.</li>
+      <li><strong>Settings → Chat → Rollback</strong>을 엽니다.</li>
+      <li>방금 작업 항목에서 <strong>View differences</strong>를 눌러 되돌릴 차이가 주석 1개뿐인지 확인합니다.</li>
+      <li><strong>Restore files</strong>를 눌러 파일만 복원합니다.</li>
+      <li><code>src/rollbackPractice.js</code>를 다시 열어 주석이 사라졌고, Bob 채팅 기록은 남아 있는지 확인합니다.</li>
+      <li><strong>Restore files and task</strong>는 파일 변경과 해당 작업 기록을 함께 되돌리는 더 강한 방법이므로 이번 실습에서는 사용하지 않습니다.</li>
+    </ol>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE — Agent mode Rollback 준비</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>@/src/rollbackPractice.js
+describeRollbackPractice() 함수 바로 위에 한국어 JSDoc 주석 1개를 추가해줘.
+
+조건:
+1. 주석은 describeRollbackPractice()의 역할을 한 문장으로 설명해줘.
+2. src/rollbackPractice.js의 다른 코드는 절대 바꾸지 마.
+3. 다른 파일은 절대 수정하지 마.
+4. 작업 후 변경한 줄만 요약해줘.</pre>
+    </div>
+    <div class="notif notif-success">
+      <div class="notif-icon">✅</div>
+      <div><p>검증 기록에는 "주석 추가 diff 확인 → Restore files 복원 → 주석 제거 확인 → 채팅 유지 확인" 순서로 남깁니다.</p></div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">3</span><h2>Bob Tips — 제안 검토</h2></div>
+  <div class="card">
+    <p>Bob Tips는 열린 파일에서 Bob이 발견한 개선 후보를 <strong>purple underline</strong>과 <strong>Bob Findings panel</strong>로 보여주는 기능입니다. 이 실습에서는 제안을 검토하되 실제 변경은 적용하지 않습니다.</p>
+    <ol class="steps">
+      <li><code>src/bobTipsPractice.js</code>를 엽니다.</li>
+      <li><strong>Bob Settings → Bob findings → Bob tips</strong>를 켭니다.</li>
+      <li>편집기에서 <strong>purple underline</strong>이 표시되는지 보고, <strong>Bob Findings panel</strong>을 엽니다.</li>
+      <li>첫 번째 finding을 선택해 설명을 읽습니다.</li>
+      <li><strong>Fix with Bob</strong>을 열어 Bob이 제안하는 변경 내용을 확인합니다.</li>
+      <li>변경을 적용하지 말고 창을 닫습니다.</li>
+      <li>기록지에 finding 내용, Bob의 proposed change, 적용하지 않은 이유를 적습니다.</li>
+      <li>파일을 열고 패널을 확인한 뒤에도 finding이 나타나지 않으면, "finding 없음"과 Bob Findings panel의 상태를 그대로 기록합니다.</li>
+    </ol>
+  </div>
+
+  <div class="section-title"><span class="section-num">4</span><h2>Subagents — 병렬 아티팩트 읽기</h2></div>
+  <div class="card">
+    <p>Subagents는 Bob이 서로 다른 범위의 읽기 작업을 독립 컨텍스트로 나누어 동시에 진행할 때 유용합니다. 이번 작업은 세 연습 아티팩트를 비교하는 읽기 전용 분석이며 파일 수정은 금지합니다.</p>
+    <ol class="steps">
+      <li>Bob IDE 채팅에 아래 프롬프트를 입력합니다.</li>
+      <li>Bob이 explore subagent 생성 approval을 요청하면 내용을 확인하고 승인합니다.</li>
+      <li>세 practice-artifacts 파일 각각의 explore subagent 요약이 돌아오는지 확인합니다.</li>
+      <li>최종 비교 표에서 artifact, purpose, owner/entry point, uncertainty가 모두 채워졌는지 확인합니다.</li>
+      <li>불확실성 항목이 비어 있으면 Bob에게 근거 파일을 다시 확인해 한 가지 uncertainty를 채우게 합니다.</li>
+    </ol>
+    <table>
+      <thead><tr><th>확인 항목</th><th>기록할 내용</th></tr></thead>
+      <tbody>
+        <tr><td>artifact</td><td><code>practice-artifacts/context-map.md</code>, <code>practice-artifacts/mode-notes.md</code>, <code>practice-artifacts/rules-check.md</code></td></tr>
+        <tr><td>purpose</td><td>해당 아티팩트가 실습에서 담당하는 목적</td></tr>
+        <tr><td>owner/entry point</td><td>문서 안에서 확인되는 담당자, 기준 위치, 시작 단서</td></tr>
+        <tr><td>uncertainty</td><td>추가 확인이 필요한 한 가지 질문</td></tr>
+      </tbody>
+    </table>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅 — explore subagent 병렬 분석</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>파일을 수정하지 말고 읽기 전용으로만 분석해줘.
+
+다음 세 파일을 각각 별도의 explore subagent로 병렬 분석해줘.
+1. practice-artifacts/context-map.md
+2. practice-artifacts/mode-notes.md
+3. practice-artifacts/rules-check.md
+
+각 explore subagent에는 위 목록 중 정확히 하나의 파일만 확인하게 해줘.
+subagent 생성 approval이 필요하면 나에게 승인 요청을 보여줘.
+
+세 subagent 요약이 돌아오면 아래 열을 가진 비교 표로 합쳐줘.
+- artifact
+- purpose
+- owner/entry point
+- uncertainty
+
+코드, 문서, 설정 파일을 절대 수정하지 마.</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">5</span><h2>프로젝트 전환 — 실제 과제 시작</h2></div>
+  <div class="card">
+    <p>G5까지 마쳤다면 핵심 기능 연습은 끝났습니다. 이제 <code>bob-practice/</code>를 닫고, 실제 과제용 <code>workshop-src/</code>만 새로 열어 M1~M7을 진행합니다.</p>
+    <ul class="chk">
+      <li>G5 기록을 마무리합니다</li>
+      <li>Bob IDE에서 <code>bob-practice/</code> 폴더를 닫습니다</li>
+      <li><code>workshop-src/</code> 폴더만 엽니다</li>
+      <li>새 Bob 채팅을 시작합니다</li>
+      <li>새 채팅에서 <code>/init</code>을 실행합니다</li>
+      <li>이후 M1~M7은 <code>workshop-src/</code>만 대상으로 진행합니다</li>
+    </ul>
+    <div class="notif notif-warning">
+      <div class="notif-icon">⚠️</div>
+      <div><p>저장소 루트나 <code>bob-practice/</code>와 <code>workshop-src/</code>를 동시에 열지 마세요. Bob의 컨텍스트가 섞이면 연습용 파일과 실제 과제 파일을 혼동할 수 있습니다.</p></div>
+    </div>
+  </div>
+</section>
+<!-- /G5 -->
+
+<!-- ════════ B0: 시나리오 소개 ════════ -->
+<section id="b0" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">과제 실습</div>
+    <h1 class="cds-heading-05">B0 — 시나리오 소개</h1>
+    <div class="page-meta">
+      <span class="tag tag-blue">배경</span>
+    </div>
+  </div>
+  <div class="notif notif-info">
+    <div class="notif-icon">ℹ️</div>
+    <div><h4>오후 과제 실습 안내</h4>
+    <p>M1~M7은 <code>workshop-src/</code>만 열어 둔 새 Bob 채팅에서 진행합니다. 참가자가 교재를 보며 자율적으로 진행하며, 순서대로 할 필요 없고 흥미 있는 미션부터 시작해도 됩니다.</p>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>오늘의 시나리오</h2></div>
+  <div class="card">
+    <p>한 고객사가 레거시 <strong>고객 포털(Customer Portal)</strong>을 운영하고 있습니다.</p>
+    <p>파트너 엔지니어는 IBM Bob을 활용해 이 코드베이스를 분석하고, 작은 개선을 제안하고, 실제로 적용하는 경험을 합니다.</p>
+    <h3>코드베이스 구조</h3>
+    <table>
+      <thead><tr><th>서비스</th><th>역할</th><th>포트</th></tr></thead>
+      <tbody>
+        <tr><td><code>frontend/</code></td><td>React + Vite 기반 고객 포털 UI</td><td>5173</td></tr>
+        <tr><td><code>auth-service/</code></td><td>로그인 / 세션 관리 서비스</td><td>3000</td></tr>
+        <tr><td><code>mock-api/</code></td><td>고객 데이터 API (레거시 서비스 대체)</td><td>8080</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>미션 전체 지도</h2></div>
+  <div class="card">
+    <table>
+      <thead><tr><th>미션</th><th>주제</th><th>난이도</th><th>핵심 Bob 기능</th></tr></thead>
+      <tbody>
+        <tr><td>M1</td><td>프론트엔드 설정 흐름 개선</td><td><span class="tag tag-green">쉬움</span></td><td>Plan → Agent Mode, diff 리뷰</td></tr>
+        <tr><td>M2</td><td>보안 이슈 탐지</td><td><span class="tag tag-yellow">보통</span></td><td>Ask Mode, security-reviewer Custom Mode</td></tr>
+        <tr><td>M3</td><td>API 계약 탐색</td><td><span class="tag tag-yellow">보통</span></td><td>@멘션, Agent Mode</td></tr>
+        <tr><td>M4</td><td>문서 검증</td><td><span class="tag tag-green">쉬움</span></td><td>Ask Mode, Literate Coding</td></tr>
+        <tr><td>M5</td><td>테스트 범위 탐색</td><td><span class="tag tag-yellow">보통</span></td><td>Plan → Agent Mode</td></tr>
+        <tr><td>M6</td><td>Skill로 환경 검증 자동화</td><td><span class="tag tag-yellow">보통</span></td><td>Skills, /env-check</td></tr>
+        <tr><td>M7</td><td>Subagent 병렬 분석</td><td><span class="tag tag-red">도전</span></td><td>Subagents</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title"><span class="section-num">3</span><h2>시작 전 준비</h2></div>
+  <div class="card">
+    <ol class="steps">
+      <li>Bob IDE에서 <code>workshop-src/</code> 폴더를 엽니다</li>
+      <li><code>/init</code>을 입력해 Bob이 프로젝트를 파악하게 합니다</li>
+      <li><code>bob-practice/</code>에서 만든 <code>.bob</code> 설정은 복사하지 않습니다. 미션에서 필요할 때 <code>workshop-src/</code> 안에 새로 만듭니다</li>
+      <li>미션 목록에서 시작할 미션을 고르고 해당 섹션으로 이동합니다</li>
+    </ol>
+  </div>
+</section>
+<!-- /B0 -->
+
+<section id="m1" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">과제 실습</div>
+    <h1 class="cds-heading-05">M1 — 설정 흐름 개선</h1>
+    <div class="page-meta">
+      <span class="tag tag-green">쉬움</span>
+      <span class="tag tag-blue">Plan → Agent Mode</span>
+    </div>
+  </div>
+
+  <div class="mission-card">
+    <div class="mission-id">Mission 1</div>
+    <h3>현재 문제</h3>
+    <p>프론트엔드가 외부 서비스 설정을 어디에서 가져오는지 Bob과 함께 추적합니다. 소스, 문서, 예시 설정이 서로 같은 규칙을 말하는지 근거 파일로 확인합니다.</p>
+    <p><strong>목표:</strong> Bob에게 계획을 먼저 요청하고, 승인 후 발견한 설정 흐름의 불일치를 작은 범위로 정리합니다.</p>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>Plan Mode — 계획 수립</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE — Plan Mode (/plan)</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>@/frontend
+프론트엔드가 외부 서비스 주소나 런타임 설정을 어디에서 읽는지
+소스, 문서, 예시 설정 파일의 근거로 추적해줘.
+불일치가 있으면 작은 구현 계획을 세워줘.
+변경 파일, 변경 이유, 검증 방법을 표로 정리해줘.
+코드는 아직 바꾸지 마.</pre>
+    </div>
+    <p>Bob이 계획을 제시하면 근거 파일과 변경 범위가 충분히 좁은지 확인합니다. 계획이 바로 특정 값으로 점프하면, 먼저 어떤 파일에서 확인했는지 되물어보세요.</p>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>Agent Mode — 변경 적용 &amp; diff 리뷰</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE — Agent Mode (/agent)</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>방금 승인한 계획대로 필요한 파일만 최소 범위로 수정해줘.
+수정 전후의 설정 흐름을 비교하고,
+변경 후 diff에서 참가자가 봐야 할 포인트를 한국어로 설명해줘.</pre>
+    </div>
+    <h3>diff 확인 포인트</h3>
+    <ul class="chk">
+      <li>Bob이 발견한 설정 규칙과 실제 코드가 같은 출처를 쓰는가</li>
+      <li>로컬 실행 기본값이 필요한 경우 근거와 함께 남아 있는가</li>
+      <li>문제 해결에 필요한 파일만 변경됐는가</li>
+    </ul>
+    <div class="notif notif-warning">
+      <div class="notif-icon">⚠️</div>
+      <div><p>런타임 설정 규칙은 프레임워크마다 다릅니다. Bob의 제안이 맞는지 프로젝트 설정과 공식 문서를 기준으로 확인하세요.</p></div>
+    </div>
+  </div>
+</section>
+<!-- /M1 -->
+
+<!-- ════════ M2: 보안 이슈 탐지 ════════ -->
+<section id="m2" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">과제 실습</div>
+    <h1 class="cds-heading-05">M2 — 보안 이슈 탐지</h1>
+    <div class="page-meta">
+      <span class="tag tag-yellow">보통</span>
+      <span class="tag tag-purple">Ask Mode · Custom Mode</span>
+    </div>
+  </div>
+
+  <div class="mission-card">
+    <div class="mission-id">Mission 2</div>
+    <h3>현재 문제</h3>
+    <p>인증 서비스의 코드와 환경변수 예시를 함께 읽고, 운영 전 점검해야 할 보안 신호를 Bob이 근거와 함께 찾도록 합니다.</p>
+    <p><strong>목표:</strong> Ask에서는 읽기 전용 분석을 받고, Custom Mode에서는 같은 코드가 다른 관점으로 어떻게 정리되는지 비교합니다.</p>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>Ask Mode — 보안 이슈 분석</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE — Ask Mode (/ask)</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>@/auth-service/src/app.js
+@/auth-service/.env.example
+이 두 파일에서 보안 위험 요소를 찾아 위험 수준(높음/중간/낮음)과
+현업 권고 조치를 표로 정리해줘.</pre>
+    </div>
+    <h3>결과 검토 체크</h3>
+    <ul class="chk">
+      <li>각 위험 항목에 파일 경로와 코드 근거가 붙어 있는가</li>
+      <li>환경변수 예시와 실제 코드의 관계를 비교했는가</li>
+      <li>현업 조치가 즉시 수정, 설정 분리, 후속 백로그로 구분됐는가</li>
+    </ul>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>심화: Security Reviewer Mode로 재분석</h2></div>
+  <div class="card">
+    <p>G2에서 만든 <code>security-reviewer</code> Custom Mode로 전환하고 같은 분석을 다시 요청합니다. Ask Mode와 응답 형식 차이를 비교해 보세요.</p>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>security-reviewer Mode</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>auth-service 전체를 보안 관점에서 검토해줘.
+위험 항목마다 근거 파일, 재현 또는 확인 방법, 권장 조치를 표로 정리해줘.</pre>
+    </div>
+  </div>
+</section>
+<!-- /M2 -->
+
+<section id="m3" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">과제 실습</div>
+    <h1 class="cds-heading-05">M3 — API 계약 탐색</h1>
+    <div class="page-meta">
+      <span class="tag tag-yellow">보통</span>
+      <span class="tag tag-blue">@멘션 · Agent Mode</span>
+    </div>
+  </div>
+
+  <div class="mission-card">
+    <div class="mission-id">Mission 3</div>
+    <h3>탐색 과제</h3>
+    <p>mock-api의 여러 응답을 비교해 클라이언트가 일관되게 해석할 수 있는 계약인지 확인합니다. 엔드포인트 이름이나 정답 형태를 먼저 정하지 말고, Bob이 코드와 테스트에서 증거를 찾게 합니다.</p>
+    <p><strong>목표:</strong> Bob이 응답 계약의 차이를 발견하고, 영향 범위를 확인한 뒤 필요한 경우 승인된 계획대로 수정합니다.</p>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>계약 패턴 발견</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>@/mock-api/src/app.js
+@/mock-api/test/app.test.js
+mock-api의 응답 계약을 엔드포인트별로 표로 정리하고,
+서로 다른 패턴이나 테스트와 맞지 않는 부분이 있으면 근거와 함께 찾아줘.</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>수정 계획 &amp; 적용</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE — Plan Mode</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>방금 찾은 응답 계약 불일치를 해결하는 작은 계획을 세워줘.
+수정이 필요한 파일과 테스트 영향 범위를 근거와 함께 설명하고,
+코드는 아직 바꾸지 마.</pre>
+    </div>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE — Agent Mode (계획 승인 후)</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>방금 승인한 계획대로 필요한 파일만 수정해줘.
+변경한 응답 계약과 테스트 기대값을 diff 기준으로 설명해줘.</pre>
+    </div>
+    <h3>수정 후 확인</h3>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>터미널</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>cd workshop-src
+npm test --workspace mock-api</pre>
+    </div>
+    <p>관련 테스트가 통과하면 성공입니다. 실패하면 Bob에게 실패 로그와 변경 diff를 함께 보여주고 원인 후보를 좁혀 봅니다.</p>
+  </div>
+</section>
+<!-- /M3 -->
+
+<section id="m4" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">과제 실습</div>
+    <h1 class="cds-heading-05">M4 — 문서 검증</h1>
+    <div class="page-meta">
+      <span class="tag tag-green">쉬움</span>
+      <span class="tag tag-blue">Ask Mode · Literate Coding</span>
+    </div>
+  </div>
+
+  <div class="mission-card">
+    <div class="mission-id">Mission 4</div>
+    <h3>탐색 과제</h3>
+    <p>프론트엔드 문서, 예시 설정, 빌드 도구 설정을 함께 읽고 서로 같은 설정 규칙을 설명하는지 확인합니다.</p>
+    <p><strong>목표:</strong> Bob이 문서와 실제 코드의 차이를 근거로 설명하게 하고, 필요한 문서 정리를 작은 diff로 수행합니다.</p>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>문서 근거 확인</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE — Ask Mode</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>@/frontend
+문서, 예시 설정, 빌드 도구 설정을 함께 읽고
+문서와 실제 코드 사이에 불일치가 있는지 찾아줘.
+프레임워크의 런타임 설정 규칙은 프로젝트 설정의 근거로 확인해줘.</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>문서 수정</h2></div>
+  <div class="card">
+    <p>Bob이 불일치를 찾으면, 문서와 예시 설정 중 실제로 수정이 필요한 범위만 정리하도록 요청합니다.</p>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE — Agent Mode</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>방금 찾은 문서/예시 설정 불일치를 최소 범위로 수정해줘.
+수정 이유는 참가자가 다시 확인할 수 있는 위치에 짧게 남겨줘.</pre>
+    </div>
+  </div>
+</section>
+<!-- /M4 -->
+
+<section id="m5" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">과제 실습</div>
+    <h1 class="cds-heading-05">M5 — 테스트 범위 탐색</h1>
+    <div class="page-meta">
+      <span class="tag tag-yellow">보통</span>
+      <span class="tag tag-blue">Plan → Agent Mode</span>
+    </div>
+  </div>
+
+  <div class="mission-card">
+    <div class="mission-id">Mission 5</div>
+    <h3>탐색 과제</h3>
+    <p>인증 서비스 테스트가 어떤 흐름을 검증하고 어떤 실패 경로를 놓치는지 Bob과 함께 찾습니다. 먼저 테스트 파일과 핸들러 코드를 비교해 증거를 모읍니다.</p>
+    <p><strong>목표:</strong> 누락된 테스트 후보를 Bob이 도출하게 하고, 승인 후 가장 작은 테스트 보강을 적용합니다.</p>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>테스트 범위 파악</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE — Ask Mode</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>@/auth-service/src/app.js
+@/auth-service/test/app.test.js
+현재 테스트가 커버하지 못하는 엣지 케이스를 찾아 목록으로 정리해줘.</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>테스트 추가</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE — Agent Mode</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>방금 찾은 누락 테스트 후보 중 워크숍 범위에 맞는 항목만 추가해줘.
+기존 테스트 의도를 유지하고, 새 테스트가 어떤 사용자 흐름을 보호하는지 설명해줘.</pre>
+    </div>
+    <h3>추가 후 확인</h3>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>터미널</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>cd workshop-src
+npm test --workspace auth-service</pre>
+    </div>
+    <p>관련 테스트가 통과하면 성공입니다. 실패하면 새 테스트가 실제 계약을 잘못 가정했는지, 코드가 보완되어야 하는지 Bob과 분리해 확인합니다.</p>
+  </div>
+</section>
+<!-- /M5 -->
+
+<!-- ════════ M6: Skill 자동화 ════════ -->
+<section id="m6" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">과제 실습</div>
+    <h1 class="cds-heading-05">M6 — Skill로 환경 검증 자동화</h1>
+    <div class="page-meta">
+      <span class="tag tag-yellow">보통</span>
+      <span class="tag tag-purple">Skills</span>
+    </div>
+  </div>
+
+  <div class="mission-card">
+    <div class="mission-id">Mission 6</div>
+    <h3>목표</h3>
+    <p>저장소를 처음 받은 파트너 엔지니어가 실습 전에 환경을 빠르게 점검할 수 있는 <code>env-check</code> Skill을 만들고 실행합니다.</p>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>Skill 생성 요청</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE — Agent Mode</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>이 저장소를 처음 받은 파트너 엔지니어가 실습 전에 환경을 빠르게 점검할 수 있는
+"env-check" Skill을 만들어줘.
+
+Skill 파일 경로: .bob/skills/env-check/SKILL.md
+
+Skill에 포함할 절차:
+1. 루트 package.json과 README에서 선택 실행 조건을 확인
+2. 각 서비스의 환경변수 예시 파일과 실제 코드 참조 위치를 비교
+3. 문서, 예시, 코드가 서로 다른 이름이나 기본값을 말하는지 찾기
+4. 발견 항목마다 근거 파일과 워크숍 진행 영향도를 기록
+5. 결과를 OK / CHECK / ACTION 표로 정리</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>Skill 실행</h2></div>
+  <div class="card">
+    <p>Skill 파일이 생성되면 채팅에 <code>/env-check</code>를 입력해 실행합니다.</p>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>/env-check</pre>
+    </div>
+    <h3>결과 검토 체크</h3>
+    <ul class="chk">
+      <li>각 항목이 근거 파일과 함께 표시됐는가</li>
+      <li>실습을 계속해도 되는 항목과 조치가 필요한 항목이 구분됐는가</li>
+      <li>Bob이 발견하지 못한 의심 지점은 추가 질문으로 확인했는가</li>
+    </ul>
+  </div>
+</section>
+<!-- /M6 -->
+
+<!-- ════════ M7: Subagent 병렬 분석 ════════ -->
+<section id="m7" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">과제 실습</div>
+    <h1 class="cds-heading-05">M7 — Subagent 병렬 분석</h1>
+    <div class="page-meta">
+      <span class="tag tag-red">도전</span>
+      <span class="tag tag-purple">Subagents</span>
+    </div>
+  </div>
+
+  <div class="mission-card">
+    <div class="mission-id">Mission 7</div>
+    <h3>목표</h3>
+    <p>Bob의 Subagent 기능을 사용해 세 서비스를 동시에 분석하고, 결과를 통합한 보안 위험 우선순위 표를 만듭니다.</p>
+    <p>Subagent는 각 서비스를 독립된 컨텍스트에서 분석하므로 컨텍스트 오염 없이 병렬로 실행됩니다.</p>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>병렬 Subagent 분석 요청</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE — Agent Mode</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>이 저장소의 세 서비스를 Subagent 3개에 병렬로 분석시켜줘.
+
+- Subagent 1: frontend/ — 설정, 문서, 런타임 흐름의 불일치 후보 찾기
+- Subagent 2: auth-service/ — 인증/세션 흐름의 보안 위험 후보 찾기
+- Subagent 3: mock-api/ — API 계약과 테스트의 일관성 후보 찾기
+
+각 Subagent의 결과를 합쳐 다음 형식의 표로 정리해줘.
+| 서비스 | 발견 항목 | 위험 수준 | 권장 조치 |</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>결과 검토 &amp; 우선순위 확정</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Bob IDE 채팅 (분석 후)</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>위 분석 결과를 바탕으로 오늘 하루 안에 고칠 수 있는 항목과
+다음 스프린트로 미뤄야 할 항목을 구분해줘.</pre>
+    </div>
+    <h3>결과 검토 기준</h3>
+    <table>
+      <thead><tr><th>검토 항목</th><th>확인 질문</th><th>다음 행동</th></tr></thead>
+      <tbody>
+        <tr><td>근거</td><td>각 발견에 파일 경로와 코드/문서 인용이 있는가</td><td>근거 없는 항목은 재질문</td></tr>
+        <tr><td>영향</td><td>사용자 흐름, 보안, 테스트 중 어디에 영향을 주는가</td><td>오늘 수정/백로그 구분</td></tr>
+        <tr><td>중복</td><td>여러 Subagent가 같은 원인을 다르게 표현했는가</td><td>원인 기준으로 병합</td></tr>
+        <tr><td>검증</td><td>수정 후 확인할 명령이나 diff 리뷰 포인트가 있는가</td><td>우선순위 표에 추가</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<!-- /M7 -->
+
+<!-- ════════ C1: 프롬프트 모음 ════════ -->
+<section id="c1" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">부록</div>
+    <h1 class="cds-heading-05">C1 — 프롬프트 모음</h1>
+    <div class="page-meta"><span class="tag tag-gray">참고 자료</span></div>
+  </div>
+  <div class="notif notif-info">
+    <div class="notif-icon">ℹ️</div>
+    <div><p>자주 쓰는 프롬프트를 모아놨습니다. 복사해서 바로 사용하세요.</p></div>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>코드베이스 파악</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>저장소 전체 구조 파악</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>이 저장소를 고객 포털 현대화 관점에서 읽어줘.
+frontend, auth-service, mock-api의 역할을 표로 정리하고,
+오늘 실습에서 실행하지 않아도 되는 의존성을 따로 표시해줘.
+전문 개발자가 아닌 파트너 엔지니어도 이해할 수 있게 설명해줘.</pre>
+    </div>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>특정 파일 분석</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>@/auth-service/src/app.js
+이 파일이 하는 일을 초보자도 이해할 수 있게 설명해줘.
+함수별 역할 표와 개선 후보 목록도 만들어줘.</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>계획 수립 (Plan Mode)</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>작은 변경 계획 요청</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>[변경 대상 파일]의 [문제점]을 수정하는 작은 계획을 세워줘.
+변경 파일은 최대 2개로 제한하고,
+변경 이유, 검증 방법, 롤백 포인트를 표로 정리해줘.
+코드는 아직 바꾸지 마.</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">3</span><h2>Rules / Skills / Custom Mode 생성</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Rules 생성</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>이 프로젝트에 맞는 Agent용 Rules 파일을 .bob/rules-agent/ 아래에 만들어줘.
+포함 내용:
+- 응답 언어: 한국어
+- 변경은 최대 파일 2개
+- 표와 체크리스트 중심으로 출력
+- Redis, MySQL, Docker는 제안하지 않음</pre>
+    </div>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Custom Mode 생성</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>.bob/custom_modes.yaml에 security-reviewer 모드를 추가해줘.
+이 모드는 코드를 수정하지 않고 보안 위험 분석만 수행하는 읽기 전용 모드야.</pre>
+    </div>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>Skill 생성</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>.bob/skills/env-check/SKILL.md를 만들어줘.
+이 Skill은 저장소 환경 설정 상태를 근거 파일 기준으로 점검하는 절차야.</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">4</span><h2>실행 실패 해석 (Bob IDE)</h2></div>
+  <div class="card">
+    <div class="cb-wrap">
+      <div class="cb-label"><span>에러 메시지 분석 — Bob IDE 채팅</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>아래 에러의 원인 후보와 해결 순서를 초보자도 이해할 수 있게 정리해줘.
+워크숍을 계속 진행할 수 있는 대체 경로도 알려줘.
+[에러 메시지 붙여넣기]</pre>
+    </div>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>@terminal 활용 — IDE에서</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>@terminal
+위 터미널 출력에서 실패 원인을 찾아 해결 단계를 정리해줘.</pre>
+    </div>
+  </div>
+</section>
+<!-- /C1 -->
+
+<!-- ════════ C2: 트러블슈팅 ════════ -->
+<section id="c2" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">부록</div>
+    <h1 class="cds-heading-05">C2 — 트러블슈팅</h1>
+    <div class="page-meta"><span class="tag tag-gray">참고 자료</span></div>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>환경 문제</h2></div>
+  <div class="card">
+    <h3>Bob IDE가 실행되지 않는 경우</h3>
+    <ul>
+      <li>Bob IDE를 재시작한 뒤 다시 로그인합니다</li>
+      <li><code>bob.ibm.com</code>에서 최신 IDE 설치 파일을 확인합니다</li>
+    </ul>
+    <h3>npm install 실패</h3>
+    <ul>
+      <li>네트워크/프록시 문제 → 회사 VPN 상태 확인</li>
+      <li>Node.js 버전 불일치 → <code>node --version</code>으로 18 이상 확인</li>
+      <li>에러 로그 전체를 Bob IDE 채팅에 붙여 넣거나 <code>@terminal</code>로 참조해 원인을 물어보세요</li>
+    </ul>
+    <h3>포트 충돌</h3>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>powershell — 포트 사용 확인</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>netstat -ano | findstr :8080
+netstat -ano | findstr :3000</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>Bob 동작 문제</h2></div>
+  <div class="card">
+    <h3>Custom Mode가 드롭다운에 안 보이는 경우</h3>
+    <ul>
+      <li><code>.bob/custom_modes.yaml</code> YAML 문법 오류 확인 (들여쓰기 주의)</li>
+      <li>Bob IDE 재시작</li>
+    </ul>
+    <h3>Skill이 인식되지 않는 경우</h3>
+    <ul>
+      <li>파일 경로 확인: <code>.bob/skills/{name}/SKILL.md</code></li>
+      <li>frontmatter의 <code>name</code> 필드가 있는지 확인</li>
+    </ul>
+    <h3>Bob이 파일을 너무 많이 수정하는 경우</h3>
+    <ul>
+      <li><code>.bob/rules/</code> 또는 현재 Mode의 <code>.bob/rules-{mode-slug}/</code>에 "변경 파일은 최대 2개" 규칙을 추가합니다</li>
+      <li>Plan Mode로 먼저 계획을 승인받은 뒤 Agent Mode로 전환합니다</li>
+      <li>Rollback으로 즉시 되돌릴 수 있습니다 (히스토리 패널)</li>
+    </ul>
+    <h3>컨텍스트 창이 가득 찬 경우</h3>
+    <ul>
+      <li>새 채팅을 시작합니다</li>
+      <li>@멘션으로 필요한 파일만 지정합니다</li>
+      <li>분석 범위를 폴더 단위로 좁힙니다</li>
+    </ul>
+  </div>
+
+  <div class="section-title"><span class="section-num">3</span><h2>실습 진행 가능 기준</h2></div>
+  <div class="card">
+    <div class="notif notif-success">
+      <div class="notif-icon">✅</div>
+      <div><p>실행이 실패해도 됩니다. Bob IDE로 파일을 읽고, 분석하고, 계획을 세우고, diff를 리뷰하는 것이 오늘의 핵심 학습입니다.</p></div>
+    </div>
+    <ul class="chk">
+      <li>Bob이 파일을 읽고 설명할 수 있다 → 실습 가능</li>
+      <li>Bob이 변경 계획을 표로 만들어 준다 → 실습 가능</li>
+      <li>서비스가 실행되지 않아도 → 실습 가능</li>
+      <li>테스트가 실패해도 → 실패 이유를 Bob에게 물어보면 됨</li>
+    </ul>
+  </div>
+</section>
+<!-- /C2 -->
+
+<!-- ════════ C3: 미션 힌트 ════════ -->
+<section id="c3" class="page-section">
+  <div class="page-header">
+    <div class="breadcrumb">부록</div>
+    <h1 class="cds-heading-05">C3 — 미션 힌트</h1>
+    <div class="page-meta"><span class="tag tag-gray">막혔을 때 참고</span></div>
+  </div>
+  <div class="notif notif-warning">
+    <div class="notif-icon">⚠️</div>
+    <div><p>먼저 스스로 시도해보고, 정말 막혔을 때 힌트를 확인하세요.</p></div>
+  </div>
+
+  <div class="section-title"><span class="section-num">1</span><h2>M1 힌트</h2></div>
+  <div class="card">
+    <h3>런타임 설정 규칙 찾기</h3>
+    <p>프론트엔드 프레임워크는 브라우저에 노출되는 런타임 설정에 별도 규칙을 둘 수 있습니다. Bob에게 프로젝트 설정, 예시 설정, 실제 호출 코드를 함께 읽고 어떤 규칙이 적용되는지 근거로 설명하게 하세요.</p>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>추가 질문</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>이 프론트엔드가 어떤 빌드 도구를 쓰는지 프로젝트 설정에서 확인하고,
+브라우저 코드가 읽을 수 있는 런타임 설정 규칙을 근거와 함께 설명해줘.</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">2</span><h2>M3 힌트</h2></div>
+  <div class="card">
+    <h3>응답 계약 비교</h3>
+    <p>정답 형태를 먼저 정하지 말고, 각 엔드포인트가 어떤 JSON 모양을 반환하는지 표로 만들게 하세요. 테스트가 기대하는 모양과 실제 코드가 반환하는 모양이 다르면 그 차이가 수정 후보입니다.</p>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>추가 질문</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>mock-api의 각 GET 엔드포인트에 대해 실제 응답 JSON 모양과 테스트 기대값을 비교표로 만들어줘.
+차이가 있으면 어떤 사용자/클라이언트 코드에 영향을 줄지 설명해줘.</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">3</span><h2>M5 힌트</h2></div>
+  <div class="card">
+    <h3>누락된 테스트 후보 찾기</h3>
+    <p>핸들러가 분기하는 조건과 테스트가 실제로 호출하는 조건을 나란히 비교하면 빠진 케이스를 찾기 쉽습니다. Bob에게 바로 테스트 코드를 쓰게 하기 전에 후보 목록과 우선순위를 먼저 받으세요.</p>
+    <div class="cb-wrap">
+      <div class="cb-label"><span>추가 질문</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+      <pre>auth-service의 라우트별 성공/실패 분기와 현재 테스트가 호출하는 경로를 비교표로 만들어줘.
+워크숍 시간 안에 추가할 가치가 큰 테스트 후보 2~3개만 우선순위로 추천해줘.</pre>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">4</span><h2>M7 힌트</h2></div>
+  <div class="card">
+    <h3>Subagent가 실행되지 않는 경우</h3>
+    <ul>
+      <li>Bob IDE에서 로그인과 Mode 드롭다운이 정상인지 확인합니다</li>
+      <li>Subagent 기능은 Agent Mode에서만 사용 가능합니다</li>
+      <li>Subagent 대신 "세 파일을 순서대로 분석해줘"로 대체할 수 있습니다</li>
+    </ul>
+  </div>
+</section>
+<!-- /C3 -->
+
+</main>
+
+<script>
+function navigate(id) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  const sec = document.getElementById(id);
+  if (sec) sec.classList.add('active');
+  const tab = document.querySelector('.nav-item[data-section="' + id + '"]');
+  if (tab) {
+    tab.classList.add('active');
+    tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
+  if (sec && window.location.hash !== '#' + id) {
+    history.replaceState(null, '', '#' + id);
+  }
+  window.scrollTo({ top: document.querySelector('.tab-bar').offsetTop, behavior: 'smooth' });
+}
+
+function copyCode(btn) {
+  const pre = btn.closest('.cb-wrap').querySelector('pre');
+  if (!pre) return;
+  const text = pre.textContent;
+  const done = () => {
+    btn.textContent = '✓ 복사됨';
+    btn.classList.add('ok');
+    setTimeout(() => { btn.textContent = '복사'; btn.classList.remove('ok'); }, 1500);
+  };
+  const fallback = () => {
+    const area = document.createElement('textarea');
+    area.value = text;
+    area.setAttribute('readonly', '');
+    area.style.position = 'fixed';
+    area.style.left = '-9999px';
+    document.body.appendChild(area);
+    area.select();
+    document.execCommand('copy');
+    document.body.removeChild(area);
+    done();
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done).catch(fallback);
+  } else {
+    fallback();
+  }
+}
+
+window.addEventListener('hashchange', () => {
+  const id = window.location.hash.slice(1);
+  if (id && document.getElementById(id)) navigate(id);
+});
+
+const initialSection = window.location.hash.slice(1);
+if (initialSection && document.getElementById(initialSection)) navigate(initialSection);
+</script>
+</body>
+</html>
