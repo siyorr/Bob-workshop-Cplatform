@@ -1,0 +1,13 @@
+{
+  "name": "bob-practice",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "G0-G5 IBM Bob feature practice project for workshop participants.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}
